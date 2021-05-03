@@ -1,0 +1,9 @@
+<div class="form-container">
+  <form (ngSubmit)="startSearch(search)" #search="ngForm">
+    <label>
+      <span class="material-icons">work</span>
+      <input ngModel name="description" type="text" placeholder="Title, companies, expertise or benefits" required>
+    </label>
+    <button type="submit" [disabled]="!search.valid">Search</button>
+  </form>
+</div>

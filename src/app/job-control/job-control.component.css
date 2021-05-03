@@ -1,0 +1,30 @@
+.loc {
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 21px;
+  text-transform: uppercase;
+  color: #B9BDCF;
+}
+
+.input {
+  display: flex;
+  flex-wrap: nowrap;
+  padding: 10px;
+  background: #FFFFFF;
+  color: #B9BDCF;
+  border-radius: 4px;
+}
+
+.input input {
+  width: 100%;
+  padding-left: 5px;
+  border: none;
+  outline: none;
+  overflow: hidden;
+}
+
+::placeholder {
+  font-size: 12px;
+  line-height: 14px;
+  color: #B9BDCF;
+}

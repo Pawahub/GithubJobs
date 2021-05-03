@@ -1,0 +1,13 @@
+h1 {
+  margin: 30px 0;
+  color: black;
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-size: 24px;
+  line-height: 36px;
+}
+
+h1 b {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+}
