@@ -2,13 +2,11 @@
 <div *ngIf="!loading">
 
   <ul *ngIf="jobs.length; else noJobs">
-    <li class="list-item" *ngFor="let job of jobs">
+    <li class="list-item" *ngFor="let job of jobs | pagesFilter:page">
       <div class="d-flex">
         <div class="img-fluid-container">
-          <img *ngIf="job.company_logo; else noLogo" class="img-fluid" src="{{job.company_logo}}" alt="Image not found">
-          <ng-template #noLogo>
-            <span class="no-logo">not found</span>
-          </ng-template>
+          <img *ngIf="job.company_logo" class="img-fluid" src="{{job.company_logo}}" alt="Image not found">
+          <span *ngIf="!job.company_logo" class="no-logo">not found</span>
         </div>
         <div>
           <b>{{job.company}}</b>
@@ -23,29 +21,31 @@
     </li>
   </ul>
 
-  <ul class="pagination" *ngIf="jobs.length">
+  <!-- todo create pagination in a separate component or directive -->
+
+  <ul class="pagination" *ngIf="jobs.length > 5">
     <li>
-      <button (click)="goTo.emit(-1)">
+      <button [disabled]="page === 1" (click)="goTo.emit(-1)">
         <span class="material-icons">chevron_left</span>
       </button>
     </li>
-    <li *ngIf="pageNum !== 1">
-      <button>{{pageNum - 1}}</button>
+    <li *ngIf="page !== 1">
+      <button (click)="goTo.emit(-1)">{{page - 1}}</button>
     </li>
     <li>
-      <button class="current">{{pageNum}}</button>
+      <button class="current">{{page}}</button>
     </li>
-    <li>
-      <button>{{pageNum + 1}}</button>
+    <li *ngIf="pages >= page + 1">
+      <button (click)="goTo.emit(1)">{{page + 1}}</button>
     </li>
-    <li>
+    <li *ngIf="pages - page > 2">
       <button disabled>...</button>
     </li>
-    <li>
-      <button>{{pageNum + 5}}</button>
+    <li *ngIf="pages - page >= 2">
+      <button (click)="goTo.emit(pages - page)">{{pages}}</button>
     </li>
     <li>
-      <button (click)="goTo.emit(1)">
+      <button [disabled]="page === pages" (click)="goTo.emit(1)">
         <span class="material-icons">chevron_right</span>
       </button>
     </li>

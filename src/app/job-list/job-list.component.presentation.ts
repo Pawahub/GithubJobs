@@ -11,7 +11,8 @@ import {formatDistanceToNow} from 'date-fns';
 export class JobListPresentationComponent {
   @Input() jobs: JobModel[] = [];
   @Input() loading: boolean;
-  @Input() pageNum: number;
+  @Input() page: number;
+  @Input() pages: number;
   @Output() goTo = new EventEmitter<number>();
 
   getDate(date): string {

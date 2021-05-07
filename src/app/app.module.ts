@@ -6,14 +6,15 @@ import {FormsModule} from '@angular/forms';
 import {JobService} from './shared/job.service';
 import {UserPreferences} from './shared/user.preferences.service';
 
-// import {PaginationDirective} from './shared/pagination.directive';
+import {PaginationDirective} from './shared/pagination.directive';
 
 import {AppComponent} from './app.component';
 import {JobControlComponent} from './job-control/job-control.component';
-import {JobDetailComponent} from './job-list/job-detail/job-detail.component';
+import {JobDetailComponent} from './job-detail/job-detail.component';
 import {SearchComponent} from './search/search.component';
 import {JobListPresentationComponent} from './job-list/job-list.component.presentation';
 import {JobListSmartComponent} from './job-list/job-list.component.smart';
+import {PagesPipe} from './shared/pages.pipe';
 
 @NgModule({
   declarations: [
@@ -23,12 +24,13 @@ import {JobListSmartComponent} from './job-list/job-list.component.smart';
     JobControlComponent,
     JobDetailComponent,
     SearchComponent,
-    // PaginationDirective
+    PaginationDirective,
+    PagesPipe
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    FormsModule,
+    FormsModule
   ],
   providers: [
     JobService,
