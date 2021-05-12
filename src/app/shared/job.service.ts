@@ -3,23 +3,25 @@ import {JobModel} from '../models/job.model';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {finalize, first, map, switchMap} from 'rxjs/operators';
 import {UserPreferences} from './user.preferences.service';
-import {Observable} from 'rxjs';
+import {from, Observable} from 'rxjs';
 
 @Injectable()
 export class JobService {
   public jobs: JobModel[] = [];
   public loading = true;
-  private page: number;
-  private url = 'https://cors-anywhere.herokuapp.com/jobs.github.com/positions.json';
+  public page: number;
+  public pages: number;
+  private pageURL: number;
+  private url = 'https://cors-anywhere.herokuapp.com/jobs.github.com/positions';
 
   constructor(
     private http: HttpClient,
     private userPreferences: UserPreferences) {
   }
 
-  getJobs(page = this.page = 1): Observable<JobModel[]> {
+  getJobs(page = this.pageURL = 1): Observable<JobModel[]> {
     this.loading = true;
-    return this.http.get<JobModel[]>(this.url, {
+    return this.http.get<JobModel[]>(this.url + '.json', {
       params: new HttpParams()
         .set('page', `${page}`)
         .set('description', `${this.userPreferences.description$.getValue()}`)
@@ -38,11 +40,22 @@ export class JobService {
   }
 
   getPage(): Observable<JobModel[]> {
-    this.page += 1;
-    return this.getJobs(this.page).pipe(
+    this.pageURL += 1;
+    return this.getJobs(this.pageURL).pipe(
       first(),
       map((jobs: JobModel[]) => this.jobs = [...this.jobs, ...jobs]),
       finalize(() => this.loading = false)
     );
+  }
+
+  getDetails(id): Observable<JobModel> {
+    let job = this.jobs.find(item => item.id === id);
+    if (!job) {
+      return this.http.get<JobModel>(this.url + '/' + id + '.json').pipe(
+        map(item => job = item)
+      );
+    } else {
+      return from([job]);
+    }
   }
 }

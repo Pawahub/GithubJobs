@@ -1,0 +1,27 @@
+<div *ngIf="loading" class="text-center mt-5">Loading...</div>
+
+<div *ngIf="!loading">
+  <ul *ngIf="jobs.length; else noJobs">
+    <li class="list-item" *ngFor="let job of jobs | pagesFilter:page" routerLink="detail/{{job.id}}">
+      <div class="d-flex">
+        <div class="img-fluid-container">
+          <img *ngIf="job.company_logo" class="img-fluid" src="{{job.company_logo}}" alt="Image not found">
+          <span *ngIf="!job.company_logo" class="no-logo">not found</span>
+        </div>
+        <div>
+          <b>{{job.company}}</b>
+          <h3>{{job.title}}</h3>
+          <p class="outline">Full time</p>
+        </div>
+      </div>
+      <div class="sub-info">
+        <span class="material-icons">public</span><span>{{job.location}}</span>
+        <span class="material-icons ml-3">schedule</span><span>{{getDate(job.created_at)}}</span>
+      </div>
+    </li>
+  </ul>
+
+  <ng-template #noJobs>
+    <p class="text-center mt-5">There are no jobs now</p>
+  </ng-template>
+</div>

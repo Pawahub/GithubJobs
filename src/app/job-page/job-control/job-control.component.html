@@ -1,15 +1,16 @@
-<form class="d-flex flex-column mt-3">
+<form class="d-flex flex-column">
   <label><input type="checkbox"
                 [checked]="userPreferences.fullTime$.getValue()"
                 (change)="toggleFullTime()">Full time</label>
-  <span class="loc">location</span>
-  <label class="input">
+  <label for="location" class="location-input-label">location</label>
+  <div class="location">
     <span class="material-icons">public</span>
     <input type="text"
+           id="location"
            name="location"
            placeholder="City, state, zip code or country"
            (keyup.enter)="changeLocation($event)">
-  </label>
+  </div>
   <label><input type="radio" name="location" value="London" (change)="changeLocation($event)"> London</label>
   <label><input type="radio" name="location" value="Amsterdam" (change)="changeLocation($event)"> Amsterdam</label>
   <label><input type="radio" name="location" value="New York" (change)="changeLocation($event)"> New York</label>

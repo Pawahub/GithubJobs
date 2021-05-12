@@ -1,0 +1,29 @@
+.pagination {
+  justify-content: flex-end;
+}
+
+.pagination button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 5px;
+  width: 36px;
+  height: 36px;
+  color: #B9BDCF;
+  background: transparent;
+  border: 1px solid #B7BCCE;
+  box-sizing: border-box;
+  border-radius: 4px;
+  outline: none;
+}
+
+.pagination button:enabled:not(.current):hover {
+  color: #1E86FF;
+  border: 1px solid #1E86FF;
+}
+
+.pagination button.current {
+  color: #FFFFFF;
+  background: #1E86FF;
+  border: 1px solid #1E86FF;
+}

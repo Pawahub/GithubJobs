@@ -13,3 +13,62 @@ body {
 ul {
   list-style: none;
 }
+
+b {
+  font-size: 12px;
+  line-height: 14px;
+}
+
+h3 {
+  font-size: 18px;
+  line-height: 21px;
+}
+
+.material-icons {
+  font-size: 18px;
+  padding-right: 5px;
+}
+
+.outline {
+  padding: 6px;
+  width: fit-content;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 14px;
+  border-radius: 4px;
+  border: 1px solid #334680;
+}
+
+.sub-info {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+  color: #B9BDCF;
+}
+
+.img-fluid-container {
+  display: flex;
+  align-items: center;
+  margin-right: 15px;
+}
+
+.no-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 90px;
+  width: 90px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+  color: #BDBDBD;
+  background: #F2F2F2;
+  border-radius: 4px;
+}
+
+.img-fluid {
+  border-radius: 4px;
+}

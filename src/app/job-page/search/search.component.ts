@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {NgForm} from '@angular/forms';
-import {UserPreferences} from '../shared/user.preferences.service';
+import {UserPreferences} from '../../shared/user.preferences.service';
 
 @Component({
   selector: 'app-search',

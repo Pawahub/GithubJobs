@@ -2,35 +2,36 @@ import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
+import {RoutingModule} from './routing.module';
 
 import {JobService} from './shared/job.service';
 import {UserPreferences} from './shared/user.preferences.service';
-
-import {PaginationDirective} from './shared/pagination.directive';
+import {PagesPipe} from './shared/pages.pipe';
 
 import {AppComponent} from './app.component';
-import {JobControlComponent} from './job-control/job-control.component';
+import {JobPageComponent} from './job-page/job-page.component';
+import {JobControlComponent} from './job-page/job-control/job-control.component';
+import {JobListComponent} from './job-page/job-list/job-list.component';
 import {JobDetailComponent} from './job-detail/job-detail.component';
-import {SearchComponent} from './search/search.component';
-import {JobListPresentationComponent} from './job-list/job-list.component.presentation';
-import {JobListSmartComponent} from './job-list/job-list.component.smart';
-import {PagesPipe} from './shared/pages.pipe';
+import {PaginationComponent} from './job-page/pagination/pagination.component';
+import {SearchComponent} from './job-page/search/search.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    JobListPresentationComponent,
-    JobListSmartComponent,
+    JobPageComponent,
     JobControlComponent,
+    JobListComponent,
     JobDetailComponent,
+    PaginationComponent,
     SearchComponent,
-    PaginationDirective,
     PagesPipe
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    RoutingModule
   ],
   providers: [
     JobService,

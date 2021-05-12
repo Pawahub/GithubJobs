@@ -1,0 +1,19 @@
+li.list-item {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  margin: 15px 0;
+  background: #FFFFFF;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.img-fluid-container {
+  width: 90px;
+  height: 90px;
+}
+
+.sub-info {
+  justify-content: flex-end;
+}

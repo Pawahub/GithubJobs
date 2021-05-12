@@ -1,4 +1,8 @@
-.loc {
+label {
+  cursor: pointer;
+}
+
+.location-input-label {
   font-weight: bold;
   font-size: 14px;
   line-height: 21px;
@@ -6,16 +10,17 @@
   color: #B9BDCF;
 }
 
-.input {
+.location {
   display: flex;
   flex-wrap: nowrap;
   padding: 10px;
+  margin-bottom: 30px;
   background: #FFFFFF;
   color: #B9BDCF;
   border-radius: 4px;
 }
 
-.input input {
+.location input {
   width: 100%;
   padding-left: 5px;
   border: none;

@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {UserPreferences} from '../shared/user.preferences.service';
+import {UserPreferences} from '../../shared/user.preferences.service';
 
 @Component({
   selector: 'app-job-control',
