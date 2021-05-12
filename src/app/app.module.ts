@@ -7,6 +7,7 @@ import {RoutingModule} from './routing.module';
 import {JobService} from './shared/job.service';
 import {UserPreferences} from './shared/user.preferences.service';
 import {PagesPipe} from './shared/pages.pipe';
+import {SafePipe} from './shared/sanitize.pipe';
 
 import {AppComponent} from './app.component';
 import {JobPageComponent} from './job-page/job-page.component';
@@ -25,7 +26,8 @@ import {SearchComponent} from './job-page/search/search.component';
     JobDetailComponent,
     PaginationComponent,
     SearchComponent,
-    PagesPipe
+    PagesPipe,
+    SafePipe
   ],
   imports: [
     BrowserModule,

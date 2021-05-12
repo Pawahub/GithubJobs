@@ -17,3 +17,8 @@ li.list-item {
 .sub-info {
   justify-content: flex-end;
 }
+
+.no-logo {
+  height: 90px;
+  width: 90px;
+}
