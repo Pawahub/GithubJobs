@@ -20,7 +20,10 @@
     "@angular/platform-browser": "~11.2.11",
     "@angular/platform-browser-dynamic": "~11.2.11",
     "@angular/router": "~11.2.11",
+<<<<<<< Updated upstream
     "@ngrx/effects": "^11.1.1",
+=======
+>>>>>>> Stashed changes
     "@ngrx/store": "^11.1.1",
     "bootstrap": "^4.6.0",
     "date-fns": "^2.21.1",

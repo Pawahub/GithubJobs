@@ -1,7 +1,12 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 import {Subscription} from 'rxjs';
+<<<<<<< Updated upstream:src/app/components/job-page/job-page.component.ts
 import {JobService} from '../../shared/job.service';
 import {Router} from '@angular/router';
+=======
+import {JobService} from '../shared/job.service';
+>>>>>>> Stashed changes:src/app/job-page/job-page.component.ts
 
 @Component({
   selector: 'app-job-page',
@@ -10,8 +15,8 @@ import {Router} from '@angular/router';
 export class JobPageComponent implements OnInit, OnDestroy {
   private subscription: Subscription;
 
-  constructor(public jobService: JobService,
-              public router: Router) {
+  constructor(public router: Router,
+              public jobService: JobService) {
   }
 
   ngOnInit(): void {
