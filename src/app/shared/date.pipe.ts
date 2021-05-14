@@ -6,7 +6,6 @@ import {formatDistanceToNow} from 'date-fns';
   name: 'date'
 })
 export class DatePipe implements PipeTransform {
-
   public transform(date: string): string {
     return formatDistanceToNow(new Date(date), {addSuffix: true});
   }

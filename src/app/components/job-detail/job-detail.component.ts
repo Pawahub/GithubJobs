@@ -1,9 +1,8 @@
 import {Component, OnInit, OnDestroy} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
+import {Subscription} from 'rxjs';
 import {JobService} from '../../shared/job.service';
 import {JobModel} from '../../models/job.model';
-import {Subscription} from 'rxjs';
-import {formatDistanceToNow} from 'date-fns';
 
 @Component({
   selector: 'app-job-detail',
@@ -21,10 +20,6 @@ export class JobDetailComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     const id = this.activateRoute.snapshot.params.id;
     this.subscription = this.jobService.getDetails(id).subscribe(item => this.job = item);
-  }
-
-  getDate(date): string {
-    return formatDistanceToNow(new Date(date), {addSuffix: true});
   }
 
   ngOnDestroy(): void {
