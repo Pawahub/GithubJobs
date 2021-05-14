@@ -1,8 +1,7 @@
 import {Injectable} from '@angular/core';
 import {JobModel} from '../models/job.model';
 import {HttpClient, HttpParams} from '@angular/common/http';
-import {finalize, first, map, switchMap} from 'rxjs/operators';
-import {UserPreferences} from './user.preferences.service';
+import {finalize, first, map} from 'rxjs/operators';
 import {from, Observable} from 'rxjs';
 
 @Injectable()
@@ -14,9 +13,7 @@ export class JobService {
   private pageURL: number;
   private url = 'https://cors-anywhere.herokuapp.com/jobs.github.com/positions';
 
-  constructor(
-    private http: HttpClient,
-    private userPreferences: UserPreferences) {
+  constructor(private http: HttpClient) {
   }
 
   getJobs(page = this.pageURL = 1): Observable<JobModel[]> {
@@ -24,18 +21,16 @@ export class JobService {
     return this.http.get<JobModel[]>(this.url + '.json', {
       params: new HttpParams()
         .set('page', `${page}`)
-        .set('description', `${this.userPreferences.description$.getValue()}`)
-        .set('location', `${this.userPreferences.location$.getValue()}`)
-        .set('full_time', `${this.userPreferences.fullTime$.getValue()}`)
+      // .set('description', `${this.userPreferences.description$.getValue()}`)
+      // .set('location', `${this.userPreferences.location$.getValue()}`)
+      // .set('full_time', `${this.userPreferences.fullTime$.getValue()}`)
     });
   }
 
   onJobsLoaded(): Observable<JobModel[]> {
-    return this.userPreferences.allPreferences$.pipe(
-      switchMap(() => this.getJobs().pipe(
-        map((jobs: JobModel[]) => this.jobs = jobs),
-        finalize(() => this.loading = false)
-      ))
+    return this.getJobs().pipe(
+      map((jobs: JobModel[]) => this.jobs = jobs),
+      finalize(() => this.loading = false)
     );
   }
 

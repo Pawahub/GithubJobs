@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Subscription} from 'rxjs';
-import {JobService} from '../shared/job.service';
+import {JobService} from '../../shared/job.service';
 import {Router} from '@angular/router';
 
 @Component({

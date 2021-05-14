@@ -1,6 +1,6 @@
 <div *ngIf="loading" class="text-center mt-5">Loading...</div>
 
-<div *ngIf="!loading">
+<ng-container *ngIf="!loading">
   <ul *ngIf="jobs.length; else noJobs">
     <li class="list-item" *ngFor="let job of jobs | pagesFilter:page" routerLink="detail/{{job.id}}">
       <div class="d-flex">
@@ -16,12 +16,12 @@
       </div>
       <div class="sub-info">
         <span class="material-icons">public</span><span>{{job.location}}</span>
-        <span class="material-icons ml-3">schedule</span><span>{{getDate(job.created_at)}}</span>
+        <span class="material-icons ml-3">schedule</span><span>{{job.created_at | date}}</span>
       </div>
     </li>
   </ul>
+</ng-container>
 
-  <ng-template #noJobs>
-    <p class="text-center mt-5">There are no jobs now</p>
-  </ng-template>
-</div>
+<ng-template #noJobs>
+  <p class="text-center mt-5">There are no jobs now</p>
+</ng-template>
