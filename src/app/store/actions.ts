@@ -1,6 +1,7 @@
 import {Action} from '@ngrx/store';
 import {JobModel} from '../models/job.model';
 
+export const LOAD_JOBS = 'LOAD_JOBS';
 export const GET_JOBS = 'GET_JOBS';
 export const ADD_JOBS = 'ADD_JOBS';
 export const NEXT_PAGE = 'NEXT_PAGE';
@@ -9,13 +10,17 @@ export const GO_TO_PAGE = 'GO_TO_PAGE';
 export const CHANGE_DESCRIPTION = 'CHANGE_DESCRIPTION';
 export const CHANGE_LOCATION = 'CHANGE_LOCATION';
 export const TOGGLE_FULLTIME = 'TOGGLE_FULLTIME';
+export const TOGGLE_LOADING = 'TOGGLE_LOADING';
+
+export class LoadJobs implements Action {
+  readonly type = LOAD_JOBS;
+}
 
 export class GetJobs implements Action {
   readonly type = GET_JOBS;
 
   constructor(public payload: JobModel[]) {
   }
-
 }
 
 export class AddJobs implements Action {
@@ -58,4 +63,21 @@ export class ToggleFullTime implements Action {
   readonly type = TOGGLE_FULLTIME;
 }
 
-export type ActionsType = GetJobs | AddJobs | NextPage | PrevPage | GoToPage | ChangeDescription | ChangeLocation | ToggleFullTime;
+export class ToggleLoading implements Action {
+  readonly type = TOGGLE_LOADING;
+
+  constructor(public payload: boolean) {
+  }
+}
+
+export type ActionsType =
+  LoadJobs
+  | GetJobs
+  | AddJobs
+  | NextPage
+  | PrevPage
+  | GoToPage
+  | ChangeDescription
+  | ChangeLocation
+  | ToggleFullTime
+  | ToggleLoading;

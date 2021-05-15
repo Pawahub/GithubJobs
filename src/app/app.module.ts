@@ -7,6 +7,8 @@ import {HttpClientModule} from '@angular/common/http';
 import {BrowserModule} from '@angular/platform-browser';
 
 import {reducer} from './store/reducer';
+import {AppEffects} from './store/effects';
+
 import {JobService} from './shared/job.service';
 
 import {PagesPipe} from './shared/pages.pipe';
@@ -41,7 +43,7 @@ import {SearchComponent} from './components/search/search.component';
     FormsModule,
     RoutingModule,
     StoreModule.forRoot({appState: reducer}, {}),
-    EffectsModule.forRoot([]),
+    EffectsModule.forRoot([AppEffects]),
   ],
   providers: [JobService],
   bootstrap: [AppComponent]

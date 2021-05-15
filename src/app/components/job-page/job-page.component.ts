@@ -1,7 +1,10 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {Subscription} from 'rxjs';
-import {JobService} from '../../shared/job.service';
+import {Store} from '@ngrx/store';
+import {AppStateModel} from '../../models/app-state.model';
+import {StateModel} from '../../models/state.model';
+import {LoadJobs} from '../../store/actions';
 
 @Component({
   selector: 'app-job-page',
@@ -9,16 +12,16 @@ import {JobService} from '../../shared/job.service';
 })
 export class JobPageComponent implements OnInit, OnDestroy {
   private subscription: Subscription;
+  state: StateModel;
+
 
   constructor(public router: Router,
-              public jobService: JobService) {
+              private store: Store<AppStateModel>) {
   }
 
   ngOnInit(): void {
-    this.subscription = this.jobService.onJobsLoaded().subscribe(() => {
-      this.jobService.page = 1;
-      this.jobService.pages = Math.ceil(this.jobService.jobs.length / 5);
-    });
+    this.store.dispatch(new LoadJobs());
+    this.subscription = this.store.select('appState').subscribe(store => this.state = store);
   }
 
   ngOnDestroy(): void {

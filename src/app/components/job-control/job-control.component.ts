@@ -1,7 +1,7 @@
 import {Component, OnDestroy} from '@angular/core';
 import {Store} from '@ngrx/store';
 import {Subscription} from 'rxjs';
-import {AppState} from '../../store/app-state';
+import {AppStateModel} from '../../models/app-state.model';
 import {ChangeLocation, ToggleFullTime} from '../../store/actions';
 
 @Component({
@@ -13,7 +13,7 @@ export class JobControlComponent implements OnDestroy {
   private subscription: Subscription;
   public fullTime: boolean;
 
-  constructor(public store: Store<AppState>) {
+  constructor(public store: Store<AppStateModel>) {
     this.subscription = store.select('appState').subscribe(data => this.fullTime = data.fullTime);
   }
 

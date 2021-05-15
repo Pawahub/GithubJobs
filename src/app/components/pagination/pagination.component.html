@@ -1,26 +1,26 @@
-<ul class="pagination" *ngIf="jobService.pages > 1">
+<ul class="pagination" *ngIf="state.pages > 1">
   <li>
-    <button [disabled]="jobService.page === 1" (click)="goTo(-1)">
+    <button [disabled]="state.page === 1" (click)="goTo(-1)">
       <span class="material-icons">chevron_left</span>
     </button>
   </li>
-  <li *ngIf="jobService.page !== 1">
-    <button (click)="goTo(-1)">{{jobService.page - 1}}</button>
+  <li *ngIf="state.page !== 1">
+    <button (click)="goTo(-1)">{{state.page - 1}}</button>
   </li>
   <li>
-    <button class="current">{{jobService.page}}</button>
+    <button class="current">{{state.page}}</button>
   </li>
-  <li *ngIf="jobService.pages >= jobService.page + 1">
-    <button (click)="goTo(1)">{{jobService.page + 1}}</button>
+  <li *ngIf="state.pages >= state.page + 1">
+    <button (click)="goTo(1)">{{state.page + 1}}</button>
   </li>
-  <li *ngIf="jobService.pages - jobService.page > 2">
+  <li *ngIf="state.pages - state.page > 2">
     <button disabled>...</button>
   </li>
-  <li *ngIf="jobService.pages - jobService.page >= 2">
-    <button (click)="goTo(jobService.pages - jobService.page)">{{jobService.pages}}</button>
+  <li *ngIf="state.pages - state.page >= 2">
+    <button (click)="goTo(state.pages - state.page)">{{state.pages}}</button>
   </li>
   <li>
-    <button [disabled]="jobService.page === jobService.pages" (click)="goTo(1)">
+    <button [disabled]="state.page === state.pages" (click)="goTo(1)">
       <span class="material-icons">chevron_right</span>
     </button>
   </li>

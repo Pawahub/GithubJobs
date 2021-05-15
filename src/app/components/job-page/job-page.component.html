@@ -4,10 +4,10 @@
     <app-job-control></app-job-control>
   </div>
   <div class="col-md-8">
-    <app-job-list [jobs]="this.jobService.jobs"
-                  [loading]="this.jobService.loading"
-                  [page]="this.jobService.page"
-                  [pages]="this.jobService.pages"></app-job-list>
+    <app-job-list [jobs]="state.jobs"
+                  [loading]="state.loading"
+                  [page]="state.page"
+                  [pages]="state.pages"></app-job-list>
     <app-pagination></app-pagination>
   </div>
 </div>

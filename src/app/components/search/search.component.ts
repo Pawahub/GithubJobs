@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {Store} from '@ngrx/store';
-import {AppState} from '../../store/app-state';
+import {AppStateModel} from '../../models/app-state.model';
 import {ChangeDescription} from '../../store/actions';
 
 @Component({
@@ -10,7 +10,7 @@ import {ChangeDescription} from '../../store/actions';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent {
-  constructor(private store: Store<AppState>) {
+  constructor(private store: Store<AppStateModel>) {
   }
 
   startSearch(search: NgForm): void {
