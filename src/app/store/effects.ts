@@ -7,7 +7,7 @@ import {JobService} from '../shared/job.service';
 
 @Injectable()
 export class AppEffects {
-  getJobs$ = createEffect(
+  loadJobs$ = createEffect(
     () => this.actions$.pipe(
       ofType(AppActions.LOAD_JOBS),
       tap(() => new AppActions.ToggleLoading(true)),
